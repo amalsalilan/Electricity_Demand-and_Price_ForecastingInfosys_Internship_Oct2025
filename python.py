@@ -85,11 +85,9 @@ else:
     print("Column 'text_column' does not exist in the DataFrame.")
 
 # 7. Encoding Categorical Variables
-if 'categorical_column' in df_cleaned.columns:
-    # Convert categorical variables to dummy/indicator variables
-    df_cleaned = pd.get_dummies(df_cleaned, columns=['categorical_column'])
-else:
-    print("Column 'categorical_column' does not exist in the DataFrame.")
+# Convert 'school_day' and 'holiday' columns to numeric values
+df_cleaned['school_day'] = df_cleaned['school_day'].map({'N': 0, 'Y': 1})
+df_cleaned['holiday'] = df_cleaned['holiday'].map({'N': 0, 'Y': 1})
 
 # Display the cleaned DataFrame
 print("Cleaned DataFrame:")
@@ -145,4 +143,11 @@ plt.xticks(df_monthly.index, df_monthly.index.strftime('%b %Y'), rotation=45)
 plt.grid(True)
 plt.legend()
 plt.tight_layout()
+plt.show()
+
+# Heatmap of correlation matrix
+plt.figure(figsize=(14, 8))
+correlation_matrix = df_cleaned.corr()
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', linewidths=0.5)
+plt.title('Heatmap of Correlation Matrix')
 plt.show()
