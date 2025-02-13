@@ -57,8 +57,8 @@ df_cleaned = df_cleaned.drop_duplicates()
 # Convert a column to a specific data type (e.g., 'date' column to datetime)
 df_cleaned['date'] = pd.to_datetime(df_cleaned['date'], format='%d-%m-%Y', dayfirst=True)
 
-# Resample the data to yearly frequency and calculate the mean for numeric columns only
-df_yearly = df_cleaned.resample('Y', on='date').mean(numeric_only=True)
+# Resample the data to monthly frequency and calculate the mean for numeric columns only
+df_monthly = df_cleaned.resample('M', on='date').mean(numeric_only=True)
 
 # 4. Handling Outliers
 # Select only numeric columns for quantile calculation
@@ -121,14 +121,14 @@ plt.xlabel('Demand')
 plt.ylabel('RRP')
 plt.show()
 
-# Line plot of yearly demand over time
+# Line plot of monthly demand over time with month names on x-axis
 plt.figure(figsize=(14, 8))
-plt.plot(df_yearly.index, df_yearly['demand'], linestyle='-', color='blue', alpha=0.7, label='Yearly Mean Demand')
-plt.plot(df_yearly.index, df_yearly['demand'].rolling(window=2).mean(), color='red', linewidth=2, label='2-Year Rolling Mean')
-plt.title('Yearly Demand Over Time')
-plt.xlabel('Year')
+plt.plot(df_monthly.index, df_monthly['demand'], linestyle='-', color='blue', alpha=0.7, label='Monthly Mean Demand')
+plt.plot(df_monthly.index, df_monthly['demand'].rolling(window=12).mean(), color='red', linewidth=2, label='12-Month Rolling Mean')
+plt.title('Monthly Demand Over Time')
+plt.xlabel('Year-Month')
 plt.ylabel('Demand')
-plt.xticks(rotation=45)
+plt.xticks(df_monthly.index, df_monthly.index.strftime('%b %Y'), rotation=45)
 plt.grid(True)
 plt.legend()
 plt.tight_layout()
