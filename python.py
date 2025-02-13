@@ -1,10 +1,30 @@
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 # Specify the path to your CSV file
 csv_file_path = 'c:/Users/saina/OneDrive/Desktop/Electricity_Demand-and_Price_ForecastingInfosys_Internship_Oct2025/final_dataset.csv'
 
+# Specify the data types for the columns
+dtype = {
+    'date': str,
+    'demand': float,
+    'RRP': float,
+    'demand_pos_RRP': float,
+    'RRP_positive': float,
+    'demand_neg_RRP': float,
+    'RRP_negative': float,
+    'frac_at_neg_RRP': float,
+    'min_temperature': float,
+    'max_temperature': float,
+    'solar_exposure': float,
+    'rainfall': float,
+    'school_day': str,
+    'holiday': str
+}
+
 # Read the CSV file into a DataFrame
-data = pd.read_csv(csv_file_path)
+data = pd.read_csv(csv_file_path, dtype=dtype, low_memory=False)
 
 # Display the first few rows of the DataFrame
 print(data.head())
@@ -36,6 +56,9 @@ df_cleaned = df_cleaned.drop_duplicates()
 # 3. Converting Data Types
 # Convert a column to a specific data type (e.g., 'date' column to datetime)
 df_cleaned['date'] = pd.to_datetime(df_cleaned['date'], format='%d-%m-%Y', dayfirst=True)
+
+# Resample the data to yearly frequency and calculate the mean for numeric columns only
+df_yearly = df_cleaned.resample('Y', on='date').mean(numeric_only=True)
 
 # 4. Handling Outliers
 # Select only numeric columns for quantile calculation
@@ -72,5 +95,41 @@ else:
 print("Cleaned DataFrame:")
 print(df_cleaned.head())
 
+# Display summary statistics of the cleaned DataFrame
+print(df_cleaned.describe())
+
 # Save the cleaned DataFrame to a new CSV file
 df_cleaned.to_csv('cleaned_data.csv', index=False)
+
+# Histogram of a numeric column
+df_cleaned['demand'].hist()
+plt.title('Histogram of Demand')
+plt.xlabel('Demand')
+plt.ylabel('Frequency')
+plt.show()
+
+# Boxplot of a numeric column
+sns.boxplot(x=df_cleaned['demand'])
+plt.title('Boxplot of Demand')
+plt.xlabel('Demand')
+plt.show()
+
+# Scatter plot between two numeric columns
+plt.scatter(df_cleaned['demand'], df_cleaned['RRP'])
+plt.title('Scatter Plot of Demand vs RRP')
+plt.xlabel('Demand')
+plt.ylabel('RRP')
+plt.show()
+
+# Line plot of yearly demand over time
+plt.figure(figsize=(14, 8))
+plt.plot(df_yearly.index, df_yearly['demand'], linestyle='-', color='blue', alpha=0.7, label='Yearly Mean Demand')
+plt.plot(df_yearly.index, df_yearly['demand'].rolling(window=2).mean(), color='red', linewidth=2, label='2-Year Rolling Mean')
+plt.title('Yearly Demand Over Time')
+plt.xlabel('Year')
+plt.ylabel('Demand')
+plt.xticks(rotation=45)
+plt.grid(True)
+plt.legend()
+plt.tight_layout()
+plt.show()
