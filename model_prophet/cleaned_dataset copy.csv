@@ -1,4 +1,4 @@
-date,demand,RRP,demand_pos_RRP,RRP_positive,demand_neg_RRP,RRP_negative,frac_at_neg_RRP,min_temperature,max_temperature,solar_exposure,rainfall,school_day,holiday,year,month,day,weekday,month_sin,month_cos
+date,demand,rrp,demand_pos_RRP,RRP_positive,demand_neg_RRP,RRP_negative,frac_at_neg_RRP,min_temperature,max_temperature,solar_exposure,rainfall,school_day,holiday,year,month,day,weekday,month_sin,month_cos
 2015-01-01,99635.03,1382.937923,97319.24,26.41595262,2315.79,-7.24,0.020833334,13.3,26.9,23.6,0.0,0,1,2015,1,1,3,0.49999999999999994,0.8660254037844387
 2015-01-04,104330.715,1349.049975,104330.715,25.00556024,0.0,0.0,0.0,16.3,21.4,25.2,4.2,0,0,2015,1,4,6,0.49999999999999994,0.8660254037844387
 2015-01-05,118132.2,1441.76931,118132.2,26.72417628,0.0,0.0,0.0,15.0,22.0,30.7,0.0,0,0,2015,1,5,0,0.49999999999999994,0.8660254037844387
