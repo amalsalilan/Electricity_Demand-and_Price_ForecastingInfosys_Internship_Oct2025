@@ -23,7 +23,9 @@
 
 ## 🖼️ Project Preview
 
-<img src="C:\Users\kavya\OneDrive\Pictures\Screenshots\Screenshot 2025-04-04 131608.png"alt="Forecastly UI Screenshot" width="800"/>
+<img src="output1.png" width="800"/>
+<img src="output2.png" width="800"/>
+<img src="output3.png" width="800"/>
 
 > *Enter a date range → get instant predictions → visualize with charts*
 
