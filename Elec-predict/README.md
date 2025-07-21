@@ -1,69 +1,161 @@
-# Welcome to your Lovable project
+# ⚡️ Forecastly — Electricity Demand & Price Forecasting
 
-## Project info
+![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python)
+![Flask](https://img.shields.io/badge/Flask-API-lightgrey?logo=flask)
+![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-%2338B2AC.svg?logo=tailwind-css&logoColor=white)
+![Prophet](https://img.shields.io/badge/Facebook%20Prophet-Forecasting-blueviolet)
+![Status](https://img.shields.io/badge/React-brightgreen)
 
-**URL**: https://lovable.dev/projects/a1617b44-d08b-4b4a-9c12-5309f476d944
+> **Forecastly** is a smart and simple tool for forecasting electricity **demand (KWh)** and **price** using historical data and machine learning. Built with a modern UI, a Flask backend, and powerful time-series modeling using Facebook’s Prophet.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## ✨ Features
 
-**Use Lovable**
+- 🔮 **Dual Forecasting**: Predict both electricity **demand** and **price**
+- 📈 **Interactive UI**: Input custom date ranges and see results dynamically
+- 🧠 **Prophet ML Model**: Uses seasonality-aware time series forecasting
+- ⚡ **Real-World Dataset**: Trained on actual electricity market data
+- 🎨 **Minimal UI**: Styled with Tailwind CSS for a clean, modern look
+- 🔌 **Lightweight Flask API**: Fast and scalable backend server
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a1617b44-d08b-4b4a-9c12-5309f476d944) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🖼️ Project Preview
 
-**Use your preferred IDE**
+<img src="output1.png" width="800"/>
+<img src="output2.png" width="800"/>
+<img src="output3.png" width="800"/>
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+> *Enter a date range → get instant predictions → visualize with charts*
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+## 🛠️ Tech Stack
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+| Layer       | Technologies Used                            |
+|-------------|-----------------------------------------------|
+| 💻 Frontend | HTML, Tailwind CSS, React                     |
+| 🧠 Backend  | Python, Flask, JSON APIs                      |
+| 📊 ML Model | Facebook Prophet (time-series forecasting)    |
+| 📂 Data     | Cleaned historical electricity dataset (CSV) |
+| 📈 Charts   | Chart.js for demand & price visualization     |
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+---
 
-# Step 3: Install the necessary dependencies.
-npm i
+## 🚀 How It Works
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+1. User selects a **future date range**
+2. Frontend sends the data to the Flask **backend**
+3. Backend loads pre-trained **Prophet models**
+4. Forecasts are generated for both **demand** and **price**
+5. Results are returned to the UI and displayed as **tables + charts**
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🔧 Prerequisites
+- Python 3.10+
+- Node.js & npm (for frontend)
 
-**Use GitHub Codespaces**
+## ▶️ Getting Started
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### 🔧 Installation
 
-## What technologies are used for this project?
+## ⚙ Backend Setup (Flask + Prophet)
 
-This project is built with .
+1️⃣ Clone the Repository
+  git clone https://github.com/your-username/ui FIXED.git         
+  
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+2️⃣ Create a Virtual Environment
+         
+          
+          python -m venv venv
 
-## How can I deploy this project?
+  #### Windows: 
+  
+  
+  
+          venv\Scripts\activate
+  
+  #### macOS/Linux: 
+  
+  
+          source venv/bin/activate
+  
+3️⃣ Install Python Dependencies
 
-Simply open [Lovable](https://lovable.dev/projects/a1617b44-d08b-4b4a-9c12-5309f476d944) and click on Share -> Publish.
+  #### If you have a requirements.txt:
+  
+  
+          pip install -r requirements.txt
+  
+  #### Or install manually:
+  
+  
+          pip install flask pandas prophet scikit-learn
+  
+4️⃣ Run the Backend Server 
+ 
+ Separately, open CMD by navigating to the app.py file, and run:
 
-## I want to use a custom domain - is that possible?
+    
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+        python app.py
+
+
+
+  
+## 🎨Frontend Setup (Tailwind + HTML + Chart.js)
+
+  The UI is a lightweight HTML page styled using Tailwind CSS and powered by Chart.js.
+  #### Step 1: Navigate to the project directory.
+  
+  
+  
+        cd <YOUR_PROJECT_NAME>
+
+#### Step 2: Install the necessary dependencies.
+
+
+
+        
+        npm i
+
+#### Step 3: Start the development server with auto-reloading and an instant preview.
+
+
+
+
+      npm run dev
+
+
+  
+## 🧪 Testing
+1️⃣ Start the backend server:
+    
+python app.py
+
+2️⃣ Open your browser and test API response:
+    
+http://localhost:8080/forecast
+
+3️⃣ Verify the frontend UI by selecting a date range and checking predictions.
+
+## ❓ FAQ
+
+Clear some common confusion for users .
+
+**Q: Do I need internet access to run this app?**  
+A: No, the app runs locally and uses local models.
+
+**Q: Can I use this for other regions?**  
+A: Yes, just supply your own formatted dataset and retrain the models.
+
+**Q: Why are my predictions showing negative values?**  
+A: Ensure proper data scaling. Check if scaler.pkl is used correctly.
+
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
